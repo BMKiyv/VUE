@@ -1,12 +1,12 @@
-/* eslint-disable indent */
+/* eslint-disable */
 <template>
 <div>
   <h2> Для начала давайте познакомимся:</h2>
   <div class="form-group p-4">
-    <label for="Email">Email:</label>
+    <label for="email">Email:</label>
     <input type="email"
       class="form-control"
-      id="Email"
+      id="email"
       aria-describedby="emailHelp"
       v-model="email"
       >
@@ -20,6 +20,10 @@
       v-model="name"
       >
   </div>
+  <button
+  class="btn btn-primary ml-4"
+    @click="addStoreUser()"
+  >Добавить:</button>
   <router-link tag="button"
     :to="'/todos/'+name"
     class="btn btn-primary ml-4"
@@ -40,8 +44,16 @@ export default {
   methods: {
     addUser () {
       this.$router.push('/todos/:name')
+    },
+    addStoreUser () {
       console.log(this.email, this.name)
+      let user = {}
+      user.email = this.email
+      user.name = this.name
+      console.log(this.email, this.name)
+      this.$store.commit('addUser', user)
     }
-  }
+  },
+  computed: console.log(this.Store)
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2>А теперь посмотрим, что {{ name }} хочет:</h2>
-        <h3> Кому письма слать:{{ email }}</h3>
+        <h3> Кому письма слать:{{ this.$store.getters.getEmail }}</h3>
          <ul class="list-group">
            <li v-for="task of getTasks"
               :key="task.index"
